@@ -1,2 +1,2 @@
 # gloomhaven-helper
-Helper app for the Gloomhaven board game
+Helper app for the Gloomhaven board game.
