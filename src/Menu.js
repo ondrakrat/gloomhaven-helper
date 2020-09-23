@@ -5,9 +5,8 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
-import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -68,9 +67,9 @@ function Menu(props) {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-            <ListItemLink to="/" primary="Home" icon={<InboxIcon />} />
-            {CLASSES.map((clazz, index) => (
-                <ListItemLink to="/skill-builder" primary={clazz} icon={<MailIcon />} />
+            <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
+            {Object.keys(CLASSES).map((clazz, index) => (
+                <ListItemLink key={clazz} to={`/skill-builder/${clazz}`} primary={clazz} />
             ))}
         </List>
       </div>
@@ -131,8 +130,10 @@ function Menu(props) {
                 </nav>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Route path="/" render={() => <h1>Home</h1>} exact={true} />
-                    <Route path="/skill-builder" component={SkillBuilder} exact={true} />
+                    <Route path="/" render={() => <h1>Home</h1>} exact />
+                    <Route path="/skill-builder/:selectedClass" 
+                        component={SkillBuilder}
+                        exact />
                 </main>
             </div>
         </Router>
