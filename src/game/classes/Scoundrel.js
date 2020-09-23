@@ -5,4 +5,8 @@ export default class Scoundrel extends Class {
     constructor() {
         super('Scoundrel', 9);
     }
+
+    skills() {
+        return {};
+    }
 }

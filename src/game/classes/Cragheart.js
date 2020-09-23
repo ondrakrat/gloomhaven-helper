@@ -5,4 +5,8 @@ export default class Cragheart extends Class {
     constructor() {
         super('Cragheart', 11);
     }
+
+    skills() {
+        return {};
+    }
 }

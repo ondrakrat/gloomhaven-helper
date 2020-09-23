@@ -5,4 +5,8 @@ export default class Spellweaver extends Class {
     constructor() {
         super('Spellweaver', 8);
     }
+
+    skills() {
+        return {};
+    }
 }

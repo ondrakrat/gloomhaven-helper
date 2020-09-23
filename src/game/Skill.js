@@ -3,4 +3,8 @@ export default class Skill {
         this.name = name;
         this.level = level;
     }
+
+    imageName() {
+        return this.name.replace(/ /gi, '_').toLowerCase();
+    }
 }
