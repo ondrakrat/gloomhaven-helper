@@ -8,7 +8,7 @@ import { DraggableTypes } from './constants';
 const useStyles = makeStyles({
     root: {
       minWidth: 100,
-      maxWidth: 300,
+      maxWidth: 250,
       borderRadius: '10px',
       margin: 10
     }

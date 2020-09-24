@@ -12,20 +12,29 @@ const useStyles = makeStyles({
         flexWrap: 'wrap'
     },
     dropbox: {
+        flexWrap: 'wrap',
         border: 'solid',
         borderRadius: '5px',
         borderColor: 'black'
     }
 });
 
+const pickSkill = (build, skillName) => {
+    if (build.some(element => element === skillName)) {
+        return;
+    }
+    build.push(skillName);
+    console.log('Current build', build);
+}
+
 function SkillBuilder(props) {
     const classes = useStyles();
     const clazz = CLASSES[props.match.params.selectedClass];
-    const skills = clazz.skills();
+    const skills = clazz.skills;
     const [build, setBuild] = useState([]);
     const [{isOver}, drop] = useDrop({
         accept: DraggableTypes.SkillCard,
-        drop: (item, monitor) => console.log('Item dropped', item),
+        drop: (item, monitor) => pickSkill(build, item.id),
         collect: monitor => ({
             isOver: !!monitor.isOver()
         })
@@ -40,19 +49,30 @@ function SkillBuilder(props) {
             </Typography>
             <Box 
                 display="flex"
+                flexDirection="row" 
                 className={classes.dropbox}
                 bgcolor={isOver ? 'darkgrey' : 'background.paper'} 
                 justifyContent="center" 
                 p={1} 
                 m={1} 
                 ref={drop}>
-                Drag and drop your skill here
+                {
+                    build.length === 0 
+                        ? 'Drag and drop your skills here' 
+                        : Object.keys(skills)
+                            .filter(skill => build.includes(skill))
+                            .map(skill => (
+                                <SkillCard key={skill} skill={skill} skills={skills} />
+                            ))
+                }
             </Box>
             <Box className={classes.flexbox} display="flex" flexDirection="row" justifyContent="center" p={1} m={1}>
                 {
-                    Object.keys(skills).map(skill => (
-                        <SkillCard key={skill} skill={skill} skills={skills} />
-                    ))
+                    Object.keys(skills)
+                        .filter(skill => !build.includes(skill))
+                        .map(skill => (
+                            <SkillCard key={skill} skill={skill} skills={skills} />
+                        ))
                 }
             </Box>
         </div>

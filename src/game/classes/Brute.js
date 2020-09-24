@@ -4,11 +4,7 @@ import Class from './Class';
 export default class Brute extends Class {
 
     constructor() {
-        super('Brute', 10);
-    }
-
-    skills() {
-        return {
+        const skills = {
             'Trample': new Skill('Trample', 1),
             'Eye for an Eye': new Skill('Eye for an Eye', 1),
             'Sweeping Blow': new Skill('Sweeping Blow', 1),
@@ -36,7 +32,8 @@ export default class Brute extends Class {
             'Frenzied Onslaught': new Skill('Frenzied Onslaught', 8),
             'Selfish Retribution': new Skill('Selfish Retribution', 8),
             'King of the Hill': new Skill('King of the Hill', 9),
-            'Face Your End': new Skill('Face Your End', 9),
-        }
+            'Face Your End': new Skill('Face Your End', 9)
+        };
+        super('Brute', 10, skills);
     }
 }
