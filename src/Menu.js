@@ -14,6 +14,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SkillBuilder from './SkillBuilder';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ListItemLink from './ListItemLink';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { CLASSES } from './gloomhaven-constants.js';
 
 
@@ -79,63 +81,66 @@ function Menu(props) {
   
     return (
         <Router>
+          {/*TODO replace by touch backend*/}
+          <DndProvider backend={HTML5Backend}>
             <div className={classes.root}>
-                <CssBaseline />
-                <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
-                    <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    className={classes.menuButton}
-                    >
-                    <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                    Gloomhaven Helper
-                    </Typography>
-                </Toolbar>
-                </AppBar>
-                <nav className={classes.drawer} aria-label="mailbox folders">
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-                <Hidden smUp implementation="css">
-                    <Drawer
-                    container={container}
-                    variant="temporary"
-                    anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                    ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
-                    }}
-                    >
-                    {drawer}
-                    </Drawer>
-                </Hidden>
-                <Hidden xsDown implementation="css">
-                    <Drawer
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                    variant="permanent"
-                    open
-                    >
-                    {drawer}
-                    </Drawer>
-                </Hidden>
-                </nav>
-                <main className={classes.content}>
-                    <div className={classes.toolbar} />
-                    <Route path="/" render={() => <h1>Home</h1>} exact />
-                    <Route path="/skill-builder/:selectedClass" 
-                        component={SkillBuilder}
-                        exact />
-                </main>
+              <CssBaseline />
+              <AppBar position="fixed" className={classes.appBar}>
+              <Toolbar>
+                  <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                  className={classes.menuButton}
+                  >
+                  <MenuIcon />
+                  </IconButton>
+                  <Typography variant="h6" noWrap>
+                  Gloomhaven Helper
+                  </Typography>
+              </Toolbar>
+              </AppBar>
+              <nav className={classes.drawer} aria-label="mailbox folders">
+              {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+              <Hidden smUp implementation="css">
+                  <Drawer
+                  container={container}
+                  variant="temporary"
+                  anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                  open={mobileOpen}
+                  onClose={handleDrawerToggle}
+                  classes={{
+                      paper: classes.drawerPaper,
+                  }}
+                  ModalProps={{
+                      keepMounted: true, // Better open performance on mobile.
+                  }}
+                  >
+                  {drawer}
+                  </Drawer>
+              </Hidden>
+              <Hidden xsDown implementation="css">
+                  <Drawer
+                  classes={{
+                      paper: classes.drawerPaper,
+                  }}
+                  variant="permanent"
+                  open
+                  >
+                  {drawer}
+                  </Drawer>
+              </Hidden>
+              </nav>
+              <main className={classes.content}>
+                  <div className={classes.toolbar} />
+                  <Route path="/" render={() => <h1>Home</h1>} exact />
+                  <Route path="/skill-builder/:selectedClass" 
+                      component={SkillBuilder}
+                      exact />
+              </main>
             </div>
+          </DndProvider>
         </Router>
     );
 }

@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
+import { useDrag } from 'react-dnd';
+import { DraggableTypes } from './constants';
 
 const useStyles = makeStyles({
     root: {
@@ -17,22 +18,27 @@ function SkillCard(props) {
     const classes = useStyles();
     const skills = props.skills;
     const skill = props.skill;
+    const [{isDragging}, drag] = useDrag({  // hook
+        item: {
+            type: DraggableTypes.SkillCard,
+            id: skill
+        },
+        collect: monitor => ({
+            isDragging: !!monitor.isDragging()
+        })
+    });
     return (
-        <Card className={classes.root}>
+        <Card 
+            className={classes.root} 
+            ref={drag}
+            opacity={isDragging ? '0.5' : '1'}  // TODO fix
+            >
             <CardMedia
                 image={`${process.env.PUBLIC_URL}/game/brute/skills/${skills[skill].imageName()}.jpg`}
                 title={skill.name}
                 component="img"
                 alt={skill.name}
             />
-            {/* <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {skill}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {`Required level: ${skills[skill].level}`}
-                </Typography>
-            </CardContent> */}
         </Card>
     )
 }
