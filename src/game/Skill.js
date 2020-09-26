@@ -5,6 +5,9 @@ export default class Skill {
     }
 
     imageName() {
-        return this.name.replace(/ /gi, '_').toLowerCase();
+        return this.name
+            .replace(/ /gi, '_')    // replace spaces by underscore
+            .replace(/[^a-zA-Z0-9_]/gi, '')  // remove non-alphanumeric characters (and keep underscore)
+            .toLowerCase();
     }
 }

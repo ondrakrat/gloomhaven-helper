@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 
 function SkillCard(props) {
     const classes = useStyles();
+    const clazz = props.clazz;
     const skills = props.skills;
     const skill = props.skill;
     const removeSkill = props.removeSkill;
@@ -42,7 +43,7 @@ function SkillCard(props) {
             opacity={isDragging ? '0.5' : '1'}  // TODO fix
             >
             <CardMedia
-                image={`${process.env.PUBLIC_URL}/game/brute/skills/${skills[skill].imageName()}.jpg`}
+                image={`${process.env.PUBLIC_URL}/game/${clazz.name.toLowerCase()}/skills/${skills[skill].imageName()}.jpg`}
                 title={skill.name}
                 component="img"
                 alt={skill.name}

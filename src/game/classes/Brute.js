@@ -9,6 +9,7 @@ export default class Brute extends Class {
             'Eye for an Eye': new Skill('Eye for an Eye', 1),
             'Sweeping Blow': new Skill('Sweeping Blow', 1),
             'Provoking Roar': new Skill('Provoking Roar', 1),
+            'Overwhelming Assault': new Skill('Overwhelming Assault', 1),
             'Grab and Go': new Skill('Grab and Go', 1),
             'Warding Strength': new Skill('Warding Strength', 1),
             'Shield Bash': new Skill('Shield Bash', 1),

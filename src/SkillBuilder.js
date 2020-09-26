@@ -68,7 +68,7 @@ function SkillBuilder(props) {
                         : Object.keys(skills)
                             .filter(skill => build.includes(skill))
                             .map(skill => (
-                                <SkillCard key={skill} skill={skill} skills={skills} removeSkill={removeSkill} />
+                                <SkillCard key={skill} skill={skill} skills={skills} clazz={clazz} removeSkill={removeSkill} />
                             ))
                 }
             </Box>
@@ -77,7 +77,7 @@ function SkillBuilder(props) {
                     Object.keys(skills)
                         .filter(skill => !build.includes(skill))
                         .map(skill => (
-                            <SkillCard key={skill} skill={skill} skills={skills} removeSkill={removeSkill} />
+                            <SkillCard key={skill} skill={skill} skills={skills} clazz={clazz} removeSkill={removeSkill} />
                         ))
                 }
             </Box>
