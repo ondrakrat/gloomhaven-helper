@@ -18,14 +18,22 @@ function SkillCard(props) {
     const classes = useStyles();
     const skills = props.skills;
     const skill = props.skill;
+    const removeSkill = props.removeSkill;
     const [{isDragging}, drag] = useDrag({  // hook
         item: {
             type: DraggableTypes.SkillCard,
-            id: skill
+            id: skill,
+            removeSkill: removeSkill
         },
         collect: monitor => ({
             isDragging: !!monitor.isDragging()
-        })
+        }),
+        end: (dropResult, monitor) => {
+            const { id, removeSkill } = monitor.getItem();
+            if (!monitor.didDrop()) {
+                removeSkill(id);
+            }
+        }
     });
     return (
         <Card 

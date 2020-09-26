@@ -39,6 +39,12 @@ function SkillBuilder(props) {
             isOver: !!monitor.isOver()
         })
     });
+    const removeSkill = (skillName) => {
+        const index = build.indexOf(skillName);
+        if (index > -1) {
+            setBuild(build.filter(skill => skill !== skillName));
+        }
+    }
     return(
         <div>
             <Typography variant="h2" gutterBottom>
@@ -62,7 +68,7 @@ function SkillBuilder(props) {
                         : Object.keys(skills)
                             .filter(skill => build.includes(skill))
                             .map(skill => (
-                                <SkillCard key={skill} skill={skill} skills={skills} />
+                                <SkillCard key={skill} skill={skill} skills={skills} removeSkill={removeSkill} />
                             ))
                 }
             </Box>
@@ -71,7 +77,7 @@ function SkillBuilder(props) {
                     Object.keys(skills)
                         .filter(skill => !build.includes(skill))
                         .map(skill => (
-                            <SkillCard key={skill} skill={skill} skills={skills} />
+                            <SkillCard key={skill} skill={skill} skills={skills} removeSkill={removeSkill} />
                         ))
                 }
             </Box>
