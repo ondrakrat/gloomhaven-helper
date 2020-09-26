@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDrop } from 'react-dnd';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -24,14 +24,28 @@ const pickSkill = (build, skillName) => {
         return;
     }
     build.push(skillName);
-    console.log('Current build', build);
 }
 
 function SkillBuilder(props) {
     const classes = useStyles();
     const clazz = CLASSES[props.match.params.selectedClass];
     const skills = clazz.skills;
+    const removeSkill = (skillName) => {
+        const index = build.indexOf(skillName);
+        if (index > -1) {
+            setBuild(build.filter(skill => skill !== skillName));
+        }
+    }
     const [build, setBuild] = useState([]);
+    const prevLocation = useRef();
+    useEffect(() => {
+        // console.log('pathname', props.location.pathname, 'prevLocation', prevLocation);
+        if (props.location.pathname !== prevLocation.current) {
+            // console.log("Route changed", props.location.pathname);
+            setBuild([]);
+        }
+        prevLocation.current = props.location.pathname;
+    }, [props.location.pathname]);
     const [{isOver}, drop] = useDrop({
         accept: DraggableTypes.SkillCard,
         drop: (item, monitor) => pickSkill(build, item.id),
@@ -39,12 +53,6 @@ function SkillBuilder(props) {
             isOver: !!monitor.isOver()
         })
     });
-    const removeSkill = (skillName) => {
-        const index = build.indexOf(skillName);
-        if (index > -1) {
-            setBuild(build.filter(skill => skill !== skillName));
-        }
-    }
     return(
         <div>
             <Typography variant="h2" gutterBottom>
