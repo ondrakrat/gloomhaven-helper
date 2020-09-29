@@ -16,6 +16,12 @@ const useStyles = makeStyles({
         border: 'solid',
         borderRadius: '5px',
         borderColor: 'black'
+    },
+    scroller: {
+        position: 'fixed',
+        width: '100%',
+        height: '100px',
+        top: '5em'
     }
 });
 
@@ -24,6 +30,11 @@ const pickSkill = (build, skillName) => {
         return;
     }
     build.push(skillName);
+}
+
+const scrollUp = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
 function SkillBuilder(props) {
@@ -53,6 +64,21 @@ function SkillBuilder(props) {
             isOver: !!monitor.isOver()
         })
     });
+    var scrolling = false;  // hack for smooth scroll to work - prevent firing scroll mutiple times
+    // hack to scroll up while dragging
+    const [{isOverScroller}, scroller] = useDrop({
+        accept: DraggableTypes.SkillCard,
+        hover: (item, monitor) => {
+            if (scrolling) {
+                return;
+            }
+            scrollUp();
+            scrolling = true;
+        },
+        collect: monitor => ({
+            isOver: !!monitor.isOver()
+        })
+    });
     return(
         <div>
             <Typography variant="h2" gutterBottom>
@@ -61,6 +87,7 @@ function SkillBuilder(props) {
             <Typography paragraph>
                 Maximum hand size: {clazz.maximumHandSize}
             </Typography>
+            <div className={classes.scroller} ref={scroller} />
             <Box 
                 display="flex"
                 flexDirection="row" 
