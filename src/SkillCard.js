@@ -24,6 +24,7 @@ function SkillCard(props) {
         item: {
             type: DraggableTypes.SkillCard,
             id: skill,
+            skill: skills[skill],
             removeSkill: removeSkill
         },
         collect: monitor => ({

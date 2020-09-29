@@ -25,8 +25,11 @@ const useStyles = makeStyles({
     }
 });
 
-const pickSkill = (build, skillName) => {
+const pickSkill = (build, skillName, clazz) => {
     if (build.some(element => element === skillName)) {
+        return;
+    }
+    if (build.length >= clazz.maximumHandSize) {
         return;
     }
     build.push(skillName);
@@ -50,16 +53,14 @@ function SkillBuilder(props) {
     const [build, setBuild] = useState([]);
     const prevLocation = useRef();
     useEffect(() => {
-        // console.log('pathname', props.location.pathname, 'prevLocation', prevLocation);
         if (props.location.pathname !== prevLocation.current) {
-            // console.log("Route changed", props.location.pathname);
             setBuild([]);
         }
         prevLocation.current = props.location.pathname;
     }, [props.location.pathname]);
     const [{isOver}, drop] = useDrop({
         accept: DraggableTypes.SkillCard,
-        drop: (item, monitor) => pickSkill(build, item.id),
+        drop: (item, monitor) => pickSkill(build, item.id, clazz),
         collect: monitor => ({
             isOver: !!monitor.isOver()
         })
