@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6ff0d6af1c4d1c34af9dc4266f6dcea1",
+    "revision": "6097bcf90ccf236f7d0a8e675dd6976b",
     "url": "/gloomhaven-helper/index.html"
   },
   {
