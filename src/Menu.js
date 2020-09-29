@@ -14,8 +14,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SkillBuilder from './SkillBuilder';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ListItemLink from './ListItemLink';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd-multi-backend';
+import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
 import { CLASSES } from './gloomhaven-constants.js';
 
 
@@ -82,7 +82,7 @@ function Menu(props) {
     return (
         <Router>
           {/*TODO replace by touch backend*/}
-          <DndProvider backend={HTML5Backend}>
+          <DndProvider options={HTML5toTouch}>
             <div className={classes.root}>
               <CssBaseline />
               <AppBar position="fixed" className={classes.appBar}>

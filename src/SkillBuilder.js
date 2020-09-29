@@ -64,19 +64,17 @@ function SkillBuilder(props) {
             isOver: !!monitor.isOver()
         })
     });
-    var scrolling = false;  // hack for smooth scroll to work - prevent firing scroll mutiple times
     // hack to scroll up while dragging
     const [{isOverScroller}, scroller] = useDrop({
         accept: DraggableTypes.SkillCard,
         hover: (item, monitor) => {
-            if (scrolling) {
+            if (isOverScroller) {
                 return;
             }
             scrollUp();
-            scrolling = true;
         },
         collect: monitor => ({
-            isOver: !!monitor.isOver()
+            isOverScroller: !!monitor.isOver()
         })
     });
     return(
