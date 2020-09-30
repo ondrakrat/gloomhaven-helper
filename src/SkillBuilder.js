@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     scroller: {
         position: 'fixed',
         width: '100%',
-        height: '100px',
+        height: '20px',
         top: '5em'
     }
 });
