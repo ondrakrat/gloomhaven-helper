@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "73c38862955a4f694f317a4f2501f9ec",
+    "revision": "94af59df240fe7b0b1e74c9924b47235",
     "url": "/gloomhaven-helper/index.html"
   },
   {
-    "revision": "a96b259300c8512074cb",
+    "revision": "d8e19df17089f522ae99",
     "url": "/gloomhaven-helper/static/css/main.6100464d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gloomhaven-helper/static/js/2.ed1c8cb4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a96b259300c8512074cb",
-    "url": "/gloomhaven-helper/static/js/main.fec1693f.chunk.js"
+    "revision": "d8e19df17089f522ae99",
+    "url": "/gloomhaven-helper/static/js/main.20a53111.chunk.js"
   },
   {
     "revision": "752f7e76f6624fb32545",
