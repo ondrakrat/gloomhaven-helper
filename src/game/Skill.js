@@ -1,7 +1,9 @@
 export default class Skill {
-    constructor(name, level) {
+
+    constructor(name, level, initiative) {
         this.name = name;
         this.level = level;
+        this.initiative = initiative;
     }
 
     imageName() {

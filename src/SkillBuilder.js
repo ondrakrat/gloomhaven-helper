@@ -114,6 +114,18 @@ function SkillBuilder(props) {
                     marks={sliderLabels}
                     onChange={levelChanged}
                 />
+                <Typography variant="h4" gutterBottom>
+                    Build statistics:
+                </Typography>
+                <Typography paragraph>
+                    {`Lowest initiative: ${build.length === 0 ? 'N/A' : Math.min(...build.map(skill => skills[skill].initiative))}`}
+                </Typography>
+                <Typography paragraph>
+                    {`Highest initiative: ${build.length === 0 ? 'N/A' : Math.max(...build.map(skill => skills[skill].initiative))}`}
+                </Typography>
+                <Typography paragraph>
+                    {`Average initiative: ${build.length === 0 ? 'N/A' : Math.round(build.map(skill => skills[skill].initiative).reduce((s1, s2) => s1 + s2, 0) / build.length)}`}
+                </Typography>
             </div>
             
             <Box 
@@ -146,7 +158,7 @@ function SkillBuilder(props) {
                 {
                     Object.values(skills)
                         .filter(skill => skill.level <= level)
-                        .filter(skill => !build.includes(skill))
+                        .filter(skill => !build.includes(skill.name))
                         .map(skill => (
                             <SkillCard key={skill.name} skill={skill.name} skills={skills} clazz={clazz} removeSkill={removeSkill} />
                         ))
