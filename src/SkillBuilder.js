@@ -3,6 +3,7 @@ import { useDrop } from 'react-dnd';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Slider from '@material-ui/core/Slider';
 import { CLASSES } from './gloomhaven-constants.js';
 import SkillCard from './SkillCard';
 import { DraggableTypes } from './constants';
@@ -22,6 +23,9 @@ const useStyles = makeStyles({
         width: '100%',
         height: '20px',
         top: '5em'
+    },
+    slider: {
+        maxWidth: '250px'
     }
 });
 
@@ -40,6 +44,10 @@ const scrollUp = () => {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+const sliderLabels = [...Array(9).keys()]
+    .map(i => i + 1)
+    .map(i => ({'value': i, 'label': i}))
+
 function SkillBuilder(props) {
     const classes = useStyles();
     const clazz = CLASSES[props.match.params.selectedClass];
@@ -51,6 +59,7 @@ function SkillBuilder(props) {
         }
     }
     const [build, setBuild] = useState([]);
+    const [level, setLevel] = useState(1);
     const prevLocation = useRef();
     useEffect(() => {
         if (props.location.pathname !== prevLocation.current) {
@@ -78,15 +87,35 @@ function SkillBuilder(props) {
             isOverScroller: !!monitor.isOver()
         })
     });
+    const levelChanged = (e, value) => {
+        setLevel(value);
+        setBuild(build.filter(skill => skills[skill].level <= value));
+    }
     return(
         <div>
+            <div className={classes.scroller} ref={scroller} />
             <Typography variant="h2" gutterBottom>
                 {clazz.name}
             </Typography>
-            <Typography paragraph>
-                Maximum hand size: {clazz.maximumHandSize}
-            </Typography>
-            <div className={classes.scroller} ref={scroller} />
+            <div>
+                <Typography paragraph>
+                    Maximum hand size: {clazz.maximumHandSize}
+                </Typography>
+                <Typography id="level-label" gutterBottom>
+                    Level:
+                </Typography>
+                <Slider
+                    className={classes.slider}
+                    defaultValue={1}
+                    min={1}
+                    max={9}
+                    aria-labelledby="level-label"
+                    valueLabelDisplay="auto"
+                    marks={sliderLabels}
+                    onChange={levelChanged}
+                />
+            </div>
+            
             <Box 
                 display="flex"
                 flexDirection="row" 
@@ -99,19 +128,27 @@ function SkillBuilder(props) {
                 {
                     build.length === 0 
                         ? 'Drag and drop your skills here' 
-                        : Object.keys(skills)
-                            .filter(skill => build.includes(skill))
+                        : Object.values(skills)
+                            .filter(skill => skill.level <= level)
+                            .filter(skill => build.includes(skill.name))
                             .map(skill => (
-                                <SkillCard key={skill} skill={skill} skills={skills} clazz={clazz} removeSkill={removeSkill} />
+                                <SkillCard key={skill.name} skill={skill.name} skills={skills} clazz={clazz} removeSkill={removeSkill} />
                             ))
                 }
             </Box>
-            <Box className={classes.flexbox} display="flex" flexDirection="row" justifyContent="center" p={1} m={1}>
+            <Box 
+                className={classes.flexbox} 
+                display="flex" 
+                flexDirection="row" 
+                justifyContent="center" 
+                p={1} 
+                m={1}>
                 {
-                    Object.keys(skills)
+                    Object.values(skills)
+                        .filter(skill => skill.level <= level)
                         .filter(skill => !build.includes(skill))
                         .map(skill => (
-                            <SkillCard key={skill} skill={skill} skills={skills} clazz={clazz} removeSkill={removeSkill} />
+                            <SkillCard key={skill.name} skill={skill.name} skills={skills} clazz={clazz} removeSkill={removeSkill} />
                         ))
                 }
             </Box>
