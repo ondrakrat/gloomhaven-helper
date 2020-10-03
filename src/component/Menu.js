@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ListItemLink from './ListItemLink';
 import { DndProvider } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
-import { CLASSES } from './gloomhaven-constants.js';
+import { CLASSES } from '../gloomhaven-constants.js';
 
 
 const drawerWidth = 240;

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useDrag } from 'react-dnd';
-import { DraggableTypes } from './constants';
+import { DraggableTypes } from '../constants';
 
 const useStyles = makeStyles({
     root: {

@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
-import { CLASSES } from './gloomhaven-constants.js';
+import { CLASSES } from '../gloomhaven-constants.js';
 import SkillCard from './SkillCard';
-import { DraggableTypes } from './constants';
+import { DraggableTypes } from '../constants';
 
 const useStyles = makeStyles({
     flexbox: {
