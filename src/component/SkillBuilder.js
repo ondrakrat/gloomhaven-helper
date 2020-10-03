@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Slider from '@material-ui/core/Slider';
 import { CLASSES } from '../gloomhaven-constants.js';
 import SkillCard from './SkillCard';
 import { DraggableTypes } from '../constants';
+import ClassDetails from './ClassDetails';
 
 const useStyles = makeStyles({
     flexbox: {
@@ -43,10 +42,6 @@ const scrollUp = () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
-
-const sliderLabels = [...Array(9).keys()]
-    .map(i => i + 1)
-    .map(i => ({'value': i, 'label': i}))
 
 function SkillBuilder(props) {
     const classes = useStyles();
@@ -87,40 +82,11 @@ function SkillBuilder(props) {
     return(
         <div>
             <div className={classes.scroller} ref={scroller} />
-            <Typography variant="h2" gutterBottom>
-                {clazz.name}
-            </Typography>
-            <div>
-                <Typography paragraph>
-                    Maximum hand size: {clazz.maximumHandSize}
-                </Typography>
-                <Typography id="level-label" gutterBottom>
-                    Level:
-                </Typography>
-                <Slider
-                    className={classes.slider}
-                    defaultValue={1}
-                    min={1}
-                    max={9}
-                    aria-labelledby="level-label"
-                    valueLabelDisplay="auto"
-                    marks={sliderLabels}
-                    onChange={levelChanged}
-                />
-                <Typography variant="h4" gutterBottom>
-                    Build statistics:
-                </Typography>
-                <Typography paragraph>
-                    {`Lowest initiative: ${build.length === 0 ? 'N/A' : Math.min(...build.map(skill => skills[skill].initiative))}`}
-                </Typography>
-                <Typography paragraph>
-                    {`Highest initiative: ${build.length === 0 ? 'N/A' : Math.max(...build.map(skill => skills[skill].initiative))}`}
-                </Typography>
-                <Typography paragraph>
-                    {`Average initiative: ${build.length === 0 ? 'N/A' : Math.round(build.map(skill => skills[skill].initiative).reduce((s1, s2) => s1 + s2, 0) / build.length)}`}
-                </Typography>
-            </div>
-            
+            <ClassDetails 
+                    clazz={clazz} 
+                    build={build}
+                    skills={skills}
+                    levelChanged={levelChanged}/>
             <Box 
                 display="flex"
                 flexDirection="row" 
