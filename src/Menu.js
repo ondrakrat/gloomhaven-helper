@@ -136,8 +136,8 @@ function Menu(props) {
                   <div className={classes.toolbar} />
                   <Route path="/" render={() => <h1>Home</h1>} exact />
                   <Route path="/skill-builder/:selectedClass" 
-                      component={SkillBuilder}
-                      exact />
+                      exact
+                      render={(props) => <SkillBuilder {...props} key={props.match.params.selectedClass}/>}/>
               </main>
             </div>
           </DndProvider>

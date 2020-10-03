@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -60,13 +60,6 @@ function SkillBuilder(props) {
     }
     const [build, setBuild] = useState([]);
     const [level, setLevel] = useState(1);
-    const prevLocation = useRef();
-    useEffect(() => {
-        if (props.location.pathname !== prevLocation.current) {
-            setBuild([]);
-        }
-        prevLocation.current = props.location.pathname;
-    }, [props.location.pathname]);
     const [{isOver}, drop] = useDrop({
         accept: DraggableTypes.SkillCard,
         drop: (item, monitor) => pickSkill(build, item.id, clazz),
