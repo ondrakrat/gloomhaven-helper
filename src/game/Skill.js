@@ -16,9 +16,13 @@ export default class Skill {
     }
 }
 
+export const halfCard = (tags) => ({
+    tags: tags
+});
+
 export const Tag = Object.freeze({
-    MELEE: 'Melee',
-    RANGED: 'Ranged',
+    MELEE: 'Melee attack',
+    RANGED: 'Ranged attack',
     AOE: 'AoE',
     MOVE: 'Move',
     JUMP: 'Jump',
@@ -49,6 +53,7 @@ export const Tag = Object.freeze({
     STUN: 'Stun',
     MUDDLE: 'Muddle',
     SHIELD: 'Shield',
+    INVISIBLE: 'Invisible',
     DISCARD: 'Discard',
     RETALIATE: 'Retaliate',
     INSTA_KILL: 'Instant kill'

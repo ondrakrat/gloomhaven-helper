@@ -1,10 +1,6 @@
 import Skill from '../Skill';
 import Class from './Class';
-import { Tag } from '../Skill';
-
-const halfCard = (tags) => ({
-    tags: tags
-});
+import { Tag, halfCard } from '../Skill';
 
 const skills = {
     'Trample': new Skill('Trample', 1, 72, 
