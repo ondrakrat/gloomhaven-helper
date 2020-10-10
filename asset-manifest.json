@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/gloomhaven-helper/static/css/main.6100464d.chunk.css",
-    "main.js": "/gloomhaven-helper/static/js/main.d7ac476d.chunk.js",
-    "main.js.map": "/gloomhaven-helper/static/js/main.d7ac476d.chunk.js.map",
+    "main.css": "/gloomhaven-helper/static/css/main.02322acd.chunk.css",
+    "main.js": "/gloomhaven-helper/static/js/main.360e9fd0.chunk.js",
+    "main.js.map": "/gloomhaven-helper/static/js/main.360e9fd0.chunk.js.map",
     "runtime-main.js": "/gloomhaven-helper/static/js/runtime-main.98750e81.js",
     "runtime-main.js.map": "/gloomhaven-helper/static/js/runtime-main.98750e81.js.map",
-    "static/js/2.13832c9d.chunk.js": "/gloomhaven-helper/static/js/2.13832c9d.chunk.js",
-    "static/js/2.13832c9d.chunk.js.map": "/gloomhaven-helper/static/js/2.13832c9d.chunk.js.map",
+    "static/js/2.57113bb8.chunk.js": "/gloomhaven-helper/static/js/2.57113bb8.chunk.js",
+    "static/js/2.57113bb8.chunk.js.map": "/gloomhaven-helper/static/js/2.57113bb8.chunk.js.map",
     "index.html": "/gloomhaven-helper/index.html",
-    "precache-manifest.1518af2be100ffd314c2ce7b7231e78e.js": "/gloomhaven-helper/precache-manifest.1518af2be100ffd314c2ce7b7231e78e.js",
+    "precache-manifest.82eb0736f6e12c976615297d9a937925.js": "/gloomhaven-helper/precache-manifest.82eb0736f6e12c976615297d9a937925.js",
     "service-worker.js": "/gloomhaven-helper/service-worker.js",
-    "static/css/main.6100464d.chunk.css.map": "/gloomhaven-helper/static/css/main.6100464d.chunk.css.map",
-    "static/js/2.13832c9d.chunk.js.LICENSE.txt": "/gloomhaven-helper/static/js/2.13832c9d.chunk.js.LICENSE.txt"
+    "static/css/main.02322acd.chunk.css.map": "/gloomhaven-helper/static/css/main.02322acd.chunk.css.map",
+    "static/js/2.57113bb8.chunk.js.LICENSE.txt": "/gloomhaven-helper/static/js/2.57113bb8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.98750e81.js",
-    "static/js/2.13832c9d.chunk.js",
-    "static/css/main.6100464d.chunk.css",
-    "static/js/main.d7ac476d.chunk.js"
+    "static/js/2.57113bb8.chunk.js",
+    "static/css/main.02322acd.chunk.css",
+    "static/js/main.360e9fd0.chunk.js"
   ]
 }
