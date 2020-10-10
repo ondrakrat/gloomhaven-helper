@@ -52,9 +52,12 @@ export const Tag = Object.freeze({
     DISARM: 'Disarm',
     STUN: 'Stun',
     MUDDLE: 'Muddle',
+    CURSE: 'Curse',
+    STRENGTHEN: 'Strengthen',
     SHIELD: 'Shield',
     INVISIBLE: 'Invisible',
     DISCARD: 'Discard',
     RETALIATE: 'Retaliate',
-    INSTA_KILL: 'Instant kill'
+    INSTA_KILL: 'Instant kill',
+    SUMMON: 'Summon'
 });
