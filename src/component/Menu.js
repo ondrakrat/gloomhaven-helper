@@ -17,6 +17,7 @@ import ListItemLink from './ListItemLink';
 import { DndProvider } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
 import { CLASSES } from '../gloomhaven-constants.js';
+import Homepage from './Homepage';
 
 
 const drawerWidth = 240;
@@ -134,7 +135,7 @@ function Menu(props) {
               </nav>
               <main className={classes.content}>
                   <div className={classes.toolbar} />
-                  <Route path="/" render={() => <h1>Home</h1>} exact />
+                  <Route path="/" component={Homepage} exact />
                   <Route path="/skill-builder/:selectedClass" 
                       exact
                       render={(props) => <SkillBuilder {...props} key={props.match.params.selectedClass}/>}/>
