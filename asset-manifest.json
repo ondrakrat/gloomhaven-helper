@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/gloomhaven-helper/static/css/main.02322acd.chunk.css",
-    "main.js": "/gloomhaven-helper/static/js/main.360e9fd0.chunk.js",
-    "main.js.map": "/gloomhaven-helper/static/js/main.360e9fd0.chunk.js.map",
+    "main.js": "/gloomhaven-helper/static/js/main.465c55cf.chunk.js",
+    "main.js.map": "/gloomhaven-helper/static/js/main.465c55cf.chunk.js.map",
     "runtime-main.js": "/gloomhaven-helper/static/js/runtime-main.98750e81.js",
     "runtime-main.js.map": "/gloomhaven-helper/static/js/runtime-main.98750e81.js.map",
     "static/js/2.57113bb8.chunk.js": "/gloomhaven-helper/static/js/2.57113bb8.chunk.js",
     "static/js/2.57113bb8.chunk.js.map": "/gloomhaven-helper/static/js/2.57113bb8.chunk.js.map",
     "index.html": "/gloomhaven-helper/index.html",
-    "precache-manifest.82eb0736f6e12c976615297d9a937925.js": "/gloomhaven-helper/precache-manifest.82eb0736f6e12c976615297d9a937925.js",
+    "precache-manifest.41b4a645814fe2d83287e3e2911a424c.js": "/gloomhaven-helper/precache-manifest.41b4a645814fe2d83287e3e2911a424c.js",
     "service-worker.js": "/gloomhaven-helper/service-worker.js",
     "static/css/main.02322acd.chunk.css.map": "/gloomhaven-helper/static/css/main.02322acd.chunk.css.map",
     "static/js/2.57113bb8.chunk.js.LICENSE.txt": "/gloomhaven-helper/static/js/2.57113bb8.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.98750e81.js",
     "static/js/2.57113bb8.chunk.js",
     "static/css/main.02322acd.chunk.css",
-    "static/js/main.360e9fd0.chunk.js"
+    "static/js/main.465c55cf.chunk.js"
   ]
 }
