@@ -10,7 +10,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import SkillBuilder from './SkillBuilder';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ListItemLink from './ListItemLink';
@@ -53,17 +56,35 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  themeToggle: {
+    marginRight: 0,
+    marginLeft: 'auto',
+    marginTop: 'auto'
+  }
 }));
 
 function Menu(props) {
     const { window } = props;
     const classes = useStyles();
-    const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [darkMode, setDarkMode] = React.useState(false);
   
     const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen);
     };
+    const handleThemeToggle = (event) => {
+      console.log(`Checkbox value: ${event.target.checked}, dark mode: ${darkMode}`);
+      setDarkMode(event.target.checked);
+    }
+    const theme = React.useMemo(
+      () =>
+        createMuiTheme({
+          palette: {
+            type: darkMode ? 'dark' : 'light',
+          },
+        }),
+      [darkMode],
+    );
   
     const drawer = (
       <div>
@@ -81,8 +102,8 @@ function Menu(props) {
     const container = window !== undefined ? () => window().document.body : undefined;
   
     return (
+      <ThemeProvider theme={theme}>
         <Router>
-          {/*TODO replace by touch backend*/}
           <DndProvider options={HTML5toTouch}>
             <div className={classes.root}>
               <CssBaseline />
@@ -100,6 +121,20 @@ function Menu(props) {
                   <Typography variant="h6" noWrap>
                   Gloomhaven Helper
                   </Typography>
+                  <FormGroup row className={classes.themeToggle}>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={darkMode}
+                          onChange={handleThemeToggle}
+                          name="darkModeSwitch"
+                          inputProps={{ 'aria-label': 'secondary checkbox' }}
+                        />
+                      }
+                      label="Dark mode"
+                      labelPlacement="top"
+                    />
+                  </FormGroup>
               </Toolbar>
               </AppBar>
               <nav className={classes.drawer} aria-label="mailbox folders">
@@ -143,6 +178,7 @@ function Menu(props) {
             </div>
           </DndProvider>
         </Router>
+      </ThemeProvider>
     );
 }
 

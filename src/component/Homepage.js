@@ -32,6 +32,9 @@ function Homepage(props) {
                 <ListItem button component="a" href="https://online.flippingbook.com/view/598058" target="_blank">
                     <ListItemText primary="Rule Book" />
                 </ListItem>
+                <ListItem button component="a" href="https://online.flippingbook.com/view/145446" target="_blank">
+                    <ListItemText primary="Scenario Book" />
+                </ListItem>
             </List>
         </div>
     );
