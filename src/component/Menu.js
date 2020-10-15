@@ -116,11 +116,9 @@ function Menu(props) {
                   onClick={handleDrawerToggle}
                   className={classes.menuButton}
                   >
-                  <MenuIcon />
+                    <MenuIcon />
                   </IconButton>
-                  <Typography variant="h6" noWrap>
-                  Gloomhaven Helper
-                  </Typography>
+                  <Typography variant="h6" noWrap>Gloomhaven Helper</Typography>
                   <FormGroup row className={classes.themeToggle}>
                     <FormControlLabel
                       control={

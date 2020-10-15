@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import { union, frequencyMap } from '../constants';
 import { Tag } from '../game/Skill';
@@ -29,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     modal: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
@@ -37,6 +32,22 @@ const useStyles = makeStyles(theme => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    tag: {
+        '&': {
+            margin: '5px',
+            marginLeft: 0,
+            marginRight: '10px',
+        },
+        '&:first-child': {
+            marginLeft: 0
+        },
+        '&:last-child': {
+            marginRight: 0
+        }
+    },
+    bold: {
+        fontWeight: 'bold'
+    }
 }));
 
 const sliderLabels = [...Array(9).keys()]
@@ -98,34 +109,31 @@ function ClassDetails(props) {
                         <Typography variant="h4" gutterBottom>
                             Build statistics:
                         </Typography>
-                        <Typography paragraph>
-                            {`Lowest initiative: ${build.length === 0 ? 'N/A' : Math.min(...build.map(skill => skills[skill].initiative))}`}
-                        </Typography>
-                        <Typography paragraph>
-                            {`Highest initiative: ${build.length === 0 ? 'N/A' : Math.max(...build.map(skill => skills[skill].initiative))}`}
-                        </Typography>
-                        <Typography paragraph>
-                            {`Average initiative: ${build.length === 0 ? 'N/A' : Math.round(build.map(skill => skills[skill].initiative).reduce((s1, s2) => s1 + s2, 0) / build.length)}`}
-                        </Typography>
-                        <TableContainer component={Paper} className={build.length === 0 ? classes.hidden : 'mobile-hide'}>
-                            <Table className={classes.table} aria-label="caption table">
-                                <caption>Number of cards with given tag (equal tags on both top and bottom half count as a single card)</caption>
-                                <TableHead>
-                                    <TableRow>
-                                        {sortedKeys.map(tag => (
-                                            <TableCell key={tag}>{tag}</TableCell>
-                                        ))}
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow>
-                                        {sortedKeys.map((tag, i) => (
-                                            <TableCell key={`freq-${i}`}>{collectedTags[tag]}</TableCell>
-                                        ))}
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                        <Box>
+                            <span className={classes.bold}>Lowest initiative: </span>
+                            <span>{build.length === 0 ? 'N/A' : Math.min(...build.map(skill => skills[skill].initiative))}</span>
+                        </Box>
+                        <Box>
+                            <span className={classes.bold}>Highest initiative: </span>
+                            <span>{build.length === 0 ? 'N/A' : Math.max(...build.map(skill => skills[skill].initiative))}</span>
+                        </Box>
+                        <Box>
+                            <span className={classes.bold}>Average initiative: </span>
+                            <span>{build.length === 0 ? 'N/A' : Math.round(build.map(skill => skills[skill].initiative).reduce((s1, s2) => s1 + s2, 0) / build.length)}</span>
+                        </Box>
+                        <Divider className={sortedKeys.length === 0 ? 'hidden' : ''}/>
+                        <Box 
+                            display="flex"
+                            flexDirection="row"
+                            flexWrap="wrap"
+                            >
+                            {sortedKeys.map(tag => (
+                                <div key={tag} className={classes.tag}>
+                                    <Box fontWeight="fontWeightBold">{tag}</Box>
+                                    <Box>{collectedTags[tag]}</Box>
+                                </div>
+                            ))}
+                        </Box>
                     </div>
                 </Fade>
             </Modal>
