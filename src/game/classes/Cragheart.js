@@ -98,6 +98,6 @@ const skills = {
 export default class Cragheart extends Class {
 
     constructor() {
-        super('Cragheart', 11, skills);
+        super('Cragheart', 11, false, skills);
     }
 }

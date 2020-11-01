@@ -95,6 +95,6 @@ const skills = {
 export default class Brute extends Class {
 
     constructor() {
-        super('Brute', 10, skills);
+        super('Brute', 10, false, skills);
     }
 }

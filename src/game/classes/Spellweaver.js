@@ -89,6 +89,6 @@ const skills = {
 export default class Spellweaver extends Class {
 
     constructor() {
-        super('Spellweaver', 8, skills);
+        super('Spellweaver', 8, false, skills);
     }
 }

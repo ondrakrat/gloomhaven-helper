@@ -21,6 +21,7 @@ import { DndProvider } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
 import { CLASSES } from '../gloomhaven-constants.js';
 import Homepage from './Homepage';
+import ConfirmationDialog from './ConfirmationDialog';
 
 
 const drawerWidth = 240;
@@ -60,14 +61,36 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 0,
     marginLeft: 'auto',
     marginTop: 'auto'
+  },
+  spoilerContainer: {
+    position: 'relative'
+  },
+  spoiler: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    zIndex: 2,
+    background: 'lightgrey',
+    cursor: 'pointer'
   }
 }));
+
+const renderSkillBuilderLinks = (classes, unlockable) => classes
+  .filter(clazz => clazz.unlockable === unlockable)
+  .map(clazz => clazz.name)
+  .map((className, index) => (
+    <ListItemLink key={className} to={`/skill-builder/${className}`} primary={className} />
+  ))
 
 function Menu(props) {
     const { window } = props;
     const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [darkMode, setDarkMode] = React.useState(false);
+    const [spoilerDialogOpen, setSpoilerDialogOpen] = React.useState(false);
+    const [showSpoiler, setShowSpoiler] = React.useState(false);
   
     const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen);
@@ -84,16 +107,35 @@ function Menu(props) {
         }),
       [darkMode],
     );
-  
+
+    const spoilerDialogClosed = (confirmed) => {
+      setShowSpoiler(confirmed);
+      setSpoilerDialogOpen(false);
+    }
+
     const drawer = (
       <div>
         <div className={classes.toolbar} />
         <Divider />
         <List>
             <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
-            {Object.keys(CLASSES).map((clazz, index) => (
-                <ListItemLink key={clazz} to={`/skill-builder/${clazz}`} primary={clazz} />
-            ))}
+            {renderSkillBuilderLinks(Object.values(CLASSES), false)}
+            {
+              <div className={classes.spoilerContainer}>
+                {renderSkillBuilderLinks(Object.values(CLASSES), true)}
+                <div className={showSpoiler ? 'hidden' : classes.spoiler} onClick={e => setSpoilerDialogOpen(true)}>
+                  <Typography variant="overline" noWrap>Click to display spoilers</Typography>
+                </div>
+                <ConfirmationDialog
+                  id="spoiler-dialog"
+                  keepMounted
+                  title="Show spoilers"
+                  text="Do you want to display spoilers?"
+                  open={spoilerDialogOpen}
+                  onClose={spoilerDialogClosed}
+                />
+              </div>
+            }
         </List>
       </div>
     );

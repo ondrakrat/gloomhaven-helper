@@ -95,6 +95,6 @@ const skills = {
 export default class Mindthief extends Class {
 
     constructor() {
-        super('Mindthief', 10, skills);
+        super('Mindthief', 10, false, skills);
     }
 }

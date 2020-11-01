@@ -101,6 +101,6 @@ const skills = {
 export default class Tinkerer extends Class {
 
     constructor() {
-        super('Tinkerer', 12, skills);
+        super('Tinkerer', 12, false, skills);
     }
 }

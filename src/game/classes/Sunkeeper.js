@@ -98,6 +98,6 @@ const skills = {
 export default class Sunkeeper extends Class {
 
     constructor() {
-        super('Sunkeeper', 11, skills);
+        super('Sunkeeper', 11, true, skills);
     }
 }
