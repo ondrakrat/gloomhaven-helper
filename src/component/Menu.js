@@ -73,7 +73,6 @@ function Menu(props) {
       setMobileOpen(!mobileOpen);
     };
     const handleThemeToggle = (event) => {
-      console.log(`Checkbox value: ${event.target.checked}, dark mode: ${darkMode}`);
       setDarkMode(event.target.checked);
     }
     const theme = React.useMemo(
