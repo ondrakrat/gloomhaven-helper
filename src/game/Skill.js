@@ -53,6 +53,7 @@ export const Tag = Object.freeze({
     STUN: 'Stun',
     MUDDLE: 'Muddle',
     CURSE: 'Curse',
+    BLESS: 'Bless',
     STRENGTHEN: 'Strengthen',
     SHIELD: 'Shield',
     INVISIBLE: 'Invisible',
