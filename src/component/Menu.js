@@ -15,7 +15,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import SkillBuilder from './SkillBuilder';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import ListItemLink from './ListItemLink';
 import { DndProvider } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
@@ -103,7 +103,7 @@ function Menu(props) {
   
     return (
       <ThemeProvider theme={theme}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <DndProvider options={HTML5toTouch}>
             <div className={classes.root}>
               <CssBaseline />
@@ -172,6 +172,9 @@ function Menu(props) {
                   <Route path="/skill-builder/:selectedClass" 
                       exact
                       render={(props) => <SkillBuilder {...props} key={props.match.params.selectedClass}/>}/>
+                  <Route path="*" exact>
+                    <Redirect to="/" />
+                  </Route>
               </main>
             </div>
           </DndProvider>
