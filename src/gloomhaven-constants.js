@@ -5,6 +5,7 @@ import Scoundrel from './game/classes/Scoundrel';
 import Spellweaver from './game/classes/Spellweaver';
 import Tinkerer from './game/classes/Tinkerer';
 import Sunkeeper from './game/classes/Sunkeeper';
+import Summoner from './game/classes/Summoner';
 
 export const CLASSES = {
     // basic classes
@@ -15,6 +16,7 @@ export const CLASSES = {
     'Spellweaver': new Spellweaver(),
     'Tinkerer': new Tinkerer(),
     // unlockable classes
-    'Sunkeeper': new Sunkeeper()
+    'Sunkeeper': new Sunkeeper(),
+    'Summoner': new Summoner()
     // more to be unlocked...
 };

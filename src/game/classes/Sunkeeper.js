@@ -92,7 +92,7 @@ const skills = {
         halfCard([Tag.MOVE, Tag.JUMP])),
     'Divine Intervention': new Skill('Divine Intervention', 9, 9, 
         halfCard([Tag.XP, Tag.MULTI_ROUND_BUFF, Tag.DISCARD]), 
-        halfCard([Tag.SHIELD, Tag.GENERATE_LIGHT, Tag.SINGLE_ROUND_BUFF])),
+        halfCard([Tag.SHIELD, Tag.GENERATE_LIGHT, Tag.SINGLE_ROUND_BUFF]))
 };
 
 export default class Sunkeeper extends Class {

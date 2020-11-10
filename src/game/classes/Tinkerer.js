@@ -95,7 +95,7 @@ const skills = {
         halfCard([Tag.MOVE, Tag.POISON, Tag.AOE])),
     'Chimeric Formula': new Skill('Chimeric Formula', 9, 43, 
         halfCard([]),
-        halfCard([Tag.XP, Tag.DISCARD])),
+        halfCard([Tag.XP, Tag.DISCARD]))
 };
 
 export default class Tinkerer extends Class {
