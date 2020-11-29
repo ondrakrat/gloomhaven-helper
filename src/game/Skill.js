@@ -65,5 +65,8 @@ export const Tag = Object.freeze({
     // helpers
     get CONSUME_ANY() {
         return [this.CONSUME_AIR, this.CONSUME_EARTH, this.CONSUME_FIRE, this.CONSUME_ICE, this.CONSUME_LIGHT, this.CONSUME_DARK];
+    },
+    get GENERATE_ANY() {
+        return [this.GENERATE_AIR, this.GENERATE_EARTH, this.GENERATE_FIRE, this.GENERATE_ICE, this.GENERATE_LIGHT, this.GENERATE_DARK];
     }
 });

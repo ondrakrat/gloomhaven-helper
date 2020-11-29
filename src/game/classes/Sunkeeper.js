@@ -53,7 +53,7 @@ const skills = {
         halfCard([Tag.HEAL, Tag.CONSUME_LIGHT, Tag.XP])),
     'Burning Flash': new Skill('Burning Flash', 3, 51, 
         halfCard([Tag.MELEE, Tag.XP, Tag.GENERATE_LIGHT, Tag.DISCARD]), 
-        halfCard([Tag.HEAL, Tag.CONSUME_AIR, Tag.CONSUME_DARK, Tag.CONSUME_EARTH, Tag.CONSUME_FIRE, Tag.CONSUME_ICE, Tag.CONSUME_LIGHT, Tag.GENERATE_LIGHT])),
+        halfCard([Tag.HEAL, ...Tag.CONSUME_ANY, Tag.GENERATE_LIGHT])),
     'Mobilizing Axiom': new Skill('Mobilizing Axiom', 3, 23, 
         halfCard([Tag.MELEE, Tag.GENERATE_LIGHT]), 
         halfCard([Tag.XP, Tag.DISCARD])),
