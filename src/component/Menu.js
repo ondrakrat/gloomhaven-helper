@@ -74,15 +74,13 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 2,
     background: 'lightgrey',
     cursor: 'pointer'
+  },
+  classIcon: {
+    width: 24,
+    height: 24,
+    filter: 'invert(0.44)'
   }
 }));
-
-const renderSkillBuilderLinks = (classes, unlockable) => classes
-  .filter(clazz => clazz.unlockable === unlockable)
-  .map(clazz => clazz.name)
-  .map((className, index) => (
-    <ListItemLink key={className} to={`/skill-builder/${className}`} primary={className} />
-  ))
 
 function Menu(props) {
     const { window } = props;
@@ -113,13 +111,29 @@ function Menu(props) {
       setSpoilerDialogOpen(false);
     }
 
+    const renderSkillBuilderLinks = (classList, unlockable) => classList
+      .filter(clazz => clazz.unlockable === unlockable)
+      .map(clazz => clazz.name)
+      .map((className, index) => (
+        <ListItemLink 
+          key={className} 
+          to={`/skill-builder/${className}`} 
+          primary={className} 
+          icon={
+            <img src={`${process.env.PUBLIC_URL}/game/${className.toLowerCase()}/icon.svg`} alt={`${className} icon`} className={classes.classIcon}/>
+          } 
+        />
+      ))
+
     const drawer = (
       <div>
         <div className={classes.toolbar} />
         <Divider />
         <List>
             <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
+            <Divider variant="middle" />
             {renderSkillBuilderLinks(Object.values(CLASSES), false)}
+            <Divider variant="middle" />
             {
               <div className={classes.spoilerContainer}>
                 {renderSkillBuilderLinks(Object.values(CLASSES), true)}
@@ -139,7 +153,7 @@ function Menu(props) {
         </List>
       </div>
     );
-  
+
     const container = window !== undefined ? () => window().document.body : undefined;
   
     return (
@@ -151,11 +165,11 @@ function Menu(props) {
               <AppBar position="fixed" className={classes.appBar}>
               <Toolbar>
                   <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="start"
-                  onClick={handleDrawerToggle}
-                  className={classes.menuButton}
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    className={classes.menuButton}
                   >
                     <MenuIcon />
                   </IconButton>
@@ -180,19 +194,19 @@ function Menu(props) {
               {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
               <Hidden smUp implementation="css">
                   <Drawer
-                  container={container}
-                  variant="temporary"
-                  anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                  open={mobileOpen}
-                  onClose={handleDrawerToggle}
-                  classes={{
-                      paper: classes.drawerPaper,
-                  }}
-                  ModalProps={{
-                      keepMounted: true, // Better open performance on mobile.
-                  }}
-                  >
-                  {drawer}
+                    container={container}
+                    variant="temporary"
+                    anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                    ModalProps={{
+                        keepMounted: true, // Better open performance on mobile.
+                    }}
+                    >
+                    {drawer}
                   </Drawer>
               </Hidden>
               <Hidden xsDown implementation="css">
