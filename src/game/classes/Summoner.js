@@ -92,6 +92,6 @@ const skills = {
 export default class Summoner extends Class {
 
     constructor() {
-        super('Summoner', 11, true, skills);
+        super('Summoner', 9, true, skills);
     }
 }
