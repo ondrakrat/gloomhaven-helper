@@ -1,4 +1,4 @@
-import Class from './Class';
+import Class, { HitpointsScaling } from './Class';
 import Skill from '../Skill';
 import { Tag, halfCard } from '../Skill';
 
@@ -98,6 +98,6 @@ const skills = {
 export default class Sunkeeper extends Class {
 
     constructor() {
-        super('Sunkeeper', 11, true, skills);
+        super('Sunkeeper', 11, HitpointsScaling.TANK, true, skills);
     }
 }

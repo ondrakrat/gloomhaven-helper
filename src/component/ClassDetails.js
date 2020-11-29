@@ -47,6 +47,12 @@ const useStyles = makeStyles(theme => ({
     },
     bold: {
         fontWeight: 'bold'
+    },
+    classIcon: {
+        width: '1em',
+        height: '1em',
+        marginRight: '0.5em',
+        verticalAlign: 'text-top'
     }
 }));
 
@@ -66,15 +72,24 @@ function ClassDetails(props) {
     const skills = props.skills;
     const collectedTags = collectTags(build, skills);
     const sortedKeys = Object.keys(collectedTags).sort((a, b) => Object.values(Tag).indexOf(a) - Object.values(Tag).indexOf(b));
+    const [level, setLevel] = React.useState(1);
+    const onLevelChange = (e, value) => {
+        setLevel(value);
+        props.levelChanged(e, value);
+    }
 
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <div>
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h2">
+                <img src={`${process.env.PUBLIC_URL}/game/${clazz.name.toLowerCase()}/icon.svg`} alt={`${clazz.name} icon`} className={classes.classIcon}/>
                 {clazz.name}
             </Typography>
             <Typography paragraph>
                 Maximum hand size: {clazz.maximumHandSize}
+            </Typography>
+            <Typography paragraph>
+                Hitpoints: {clazz.hitpoints(level)}
             </Typography>
             <Typography id="level-label" gutterBottom>
                 Level:
@@ -87,7 +102,7 @@ function ClassDetails(props) {
                 aria-labelledby="level-label"
                 valueLabelDisplay="auto"
                 marks={sliderLabels}
-                onChange={props.levelChanged}
+                onChange={onLevelChange}
             />
             <div>
                 <Button variant="contained" color="primary" onClick={() => setModalOpen(true)}>Build statistics</Button>

@@ -1,4 +1,4 @@
-import Class from './Class';
+import Class, { HitpointsScaling } from './Class';
 import Skill from '../Skill';
 import { Tag, halfCard } from '../Skill';
 
@@ -92,6 +92,6 @@ const skills = {
 export default class Summoner extends Class {
 
     constructor() {
-        super('Summoner', 9, true, skills);
+        super('Summoner', 9, HitpointsScaling.MIDRANGE, true, skills);
     }
 }

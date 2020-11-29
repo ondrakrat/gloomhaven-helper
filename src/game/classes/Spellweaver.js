@@ -1,4 +1,4 @@
-import Class from './Class';
+import Class, { HitpointsScaling } from './Class';
 import Skill from '../Skill';
 import { Tag, halfCard } from '../Skill';
 
@@ -89,6 +89,6 @@ const skills = {
 export default class Spellweaver extends Class {
 
     constructor() {
-        super('Spellweaver', 8, false, skills);
+        super('Spellweaver', 8, HitpointsScaling.SQUISHY, false, skills);
     }
 }

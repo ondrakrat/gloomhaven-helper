@@ -1,5 +1,5 @@
 import Skill from '../Skill';
-import Class from './Class';
+import Class, { HitpointsScaling } from './Class';
 import { Tag, halfCard } from '../Skill';
 
 const skills = {
@@ -95,6 +95,6 @@ const skills = {
 export default class Brute extends Class {
 
     constructor() {
-        super('Brute', 10, false, skills);
+        super('Brute', 10, HitpointsScaling.TANK, false, skills);
     }
 }

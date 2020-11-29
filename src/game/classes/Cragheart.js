@@ -1,4 +1,4 @@
-import Class from './Class';
+import Class, { HitpointsScaling } from './Class';
 import Skill from '../Skill';
 import { Tag, halfCard } from '../Skill';
 
@@ -98,6 +98,6 @@ const skills = {
 export default class Cragheart extends Class {
 
     constructor() {
-        super('Cragheart', 11, false, skills);
+        super('Cragheart', 11, HitpointsScaling.TANK, false, skills);
     }
 }

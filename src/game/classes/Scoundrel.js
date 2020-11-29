@@ -1,4 +1,4 @@
-import Class from './Class';
+import Class, { HitpointsScaling } from './Class';
 import Skill from '../Skill';
 import { Tag, halfCard } from '../Skill';
 
@@ -92,6 +92,6 @@ const skills = {
 export default class Scoundrel extends Class {
 
     constructor() {
-        super('Scoundrel', 9, false, skills);
+        super('Scoundrel', 9, HitpointsScaling.MIDRANGE, false, skills);
     }
 }
