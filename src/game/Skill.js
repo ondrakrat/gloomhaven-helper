@@ -60,5 +60,10 @@ export const Tag = Object.freeze({
     DISCARD: 'Discard',
     RETALIATE: 'Retaliate',
     INSTA_KILL: 'Instant kill',
-    SUMMON: 'Summon'
+    SUMMON: 'Summon',
+
+    // helpers
+    get CONSUME_ANY() {
+        return [this.CONSUME_AIR, this.CONSUME_EARTH, this.CONSUME_FIRE, this.CONSUME_ICE, this.CONSUME_LIGHT, this.CONSUME_DARK];
+    }
 });
