@@ -26,6 +26,7 @@ export const Tag = Object.freeze({
     AOE: 'AoE',
     MOVE: 'Move',
     JUMP: 'Jump',
+    FLYING: 'Flying',
     LOOT: 'Loot',
     GENERATE_FIRE: 'Generate Fire element',
     GENERATE_ICE: 'Generate Ice element',
