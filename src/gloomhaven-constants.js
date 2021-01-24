@@ -9,6 +9,7 @@ import Summoner from './game/classes/Summoner';
 import Nightshroud from './game/classes/Nightshroud';
 import Plagueherald from './game/classes/Plagueherald';
 import Soothsinger from './game/classes/Soothsinger';
+import Elementalist from './game/classes/Elementalist';
 
 export const CLASSES = {
     // basic classes
@@ -23,6 +24,7 @@ export const CLASSES = {
     'Summoner': new Summoner(),
     'Nightshroud': new Nightshroud(),
     'Plagueherald': new Plagueherald(),
-    'Soothsinger': new Soothsinger()
+    'Soothsinger': new Soothsinger(),
+    'Elementalist': new Elementalist()
     // more to be unlocked...
 };
