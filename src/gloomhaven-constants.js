@@ -11,6 +11,7 @@ import Plagueherald from './game/classes/Plagueherald';
 import Soothsinger from './game/classes/Soothsinger';
 import Elementalist from './game/classes/Elementalist';
 import BeastTyrant from './game/classes/BeastTyrant';
+import Quartermaster from './game/classes/Quartermaster';
 
 export const CLASSES = {
     // basic classes
@@ -27,6 +28,7 @@ export const CLASSES = {
     'Plagueherald': new Plagueherald(),
     'Soothsinger': new Soothsinger(),
     'Elementalist': new Elementalist(),
-    'Beast Tyrant': new BeastTyrant()
+    'Beast Tyrant': new BeastTyrant(),
+    'Quartermaster': new Quartermaster()
     // more to be unlocked...
 };
