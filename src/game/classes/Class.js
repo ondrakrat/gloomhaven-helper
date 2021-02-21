@@ -7,6 +7,10 @@ export default class Class {
         this.unlockable = unlockable;
         this.skills = skills;
     }
+
+    iconPath() {
+        return `${this.name.toLowerCase().replace(/\s/g, '')}/icon.svg`
+    }
 }
 
 export const HitpointsScaling = Object.freeze({

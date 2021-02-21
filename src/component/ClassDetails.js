@@ -82,7 +82,7 @@ function ClassDetails(props) {
     return (
         <div>
             <Typography variant="h2">
-                <img src={`${process.env.PUBLIC_URL}/game/${clazz.name.toLowerCase()}/icon.svg`} alt={`${clazz.name} icon`} className={classes.classIcon}/>
+                <img src={`${process.env.PUBLIC_URL}/game/${clazz.iconPath()}`} alt={`${clazz.name} icon`} className={classes.classIcon}/>
                 {clazz.name}
             </Typography>
             <Typography paragraph>

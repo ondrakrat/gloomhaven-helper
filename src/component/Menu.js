@@ -113,14 +113,13 @@ function Menu(props) {
 
     const renderSkillBuilderLinks = (classList, unlockable) => classList
       .filter(clazz => clazz.unlockable === unlockable)
-      .map(clazz => clazz.name)
-      .map((className, index) => (
+      .map((clazz, index) => (
         <ListItemLink 
-          key={className} 
-          to={`/skill-builder/${className}`} 
-          primary={className} 
+          key={clazz.name} 
+          to={`/skill-builder/${clazz.name}`} 
+          primary={clazz.name} 
           icon={
-            <img src={`${process.env.PUBLIC_URL}/game/${className.toLowerCase()}/icon.svg`} alt={`${className} icon`} className={classes.classIcon}/>
+            <img src={`${process.env.PUBLIC_URL}/game/${clazz.iconPath()}`} alt={`${clazz.name} icon`} className={classes.classIcon}/>
           } 
         />
       ))
