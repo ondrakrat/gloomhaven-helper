@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -79,6 +80,13 @@ function ClassDetails(props) {
     }
 
     const [modalOpen, setModalOpen] = useState(false);
+    const copyBuildToClipboard = () => {
+        if (!!navigator.clipboard) {
+            navigator.clipboard.writeText(build.join(','));
+        } else {
+            console.log('Clipboard API is unavailable');
+        }
+    }
     return (
         <div>
             <Typography variant="h2">
@@ -105,7 +113,10 @@ function ClassDetails(props) {
                 onChange={onLevelChange}
             />
             <div>
-                <Button variant="contained" color="primary" onClick={() => setModalOpen(true)}>Build statistics</Button>
+                <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+                    <Button onClick={() => setModalOpen(true)}>Build statistics</Button>
+                    <Button onClick={copyBuildToClipboard}>Copy build to clipboard</Button>
+                </ButtonGroup>
             </div>
             <Modal
                 aria-labelledby="transition-modal-title"
