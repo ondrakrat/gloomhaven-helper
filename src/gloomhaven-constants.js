@@ -12,6 +12,7 @@ import Soothsinger from './game/classes/Soothsinger';
 import Elementalist from './game/classes/Elementalist';
 import BeastTyrant from './game/classes/BeastTyrant';
 import Quartermaster from './game/classes/Quartermaster';
+import Doomstalker from './game/classes/Doomstalker';
 
 export const CLASSES = {
     // basic classes
@@ -29,6 +30,7 @@ export const CLASSES = {
     'Soothsinger': new Soothsinger(),
     'Elementalist': new Elementalist(),
     'Beast Tyrant': new BeastTyrant(),
-    'Quartermaster': new Quartermaster()
+    'Quartermaster': new Quartermaster(),
+    'Doomstalker': new Doomstalker()
     // more to be unlocked...
 };
