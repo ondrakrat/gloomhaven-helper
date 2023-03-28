@@ -14,6 +14,7 @@ import BeastTyrant from './game/classes/BeastTyrant';
 import Quartermaster from './game/classes/Quartermaster';
 import Doomstalker from './game/classes/Doomstalker';
 import Sawbones from './game/classes/Sawbones';
+import Berserker from './game/classes/Berserker';
 
 export const CLASSES = {
     // basic classes
@@ -33,6 +34,6 @@ export const CLASSES = {
     'Beast Tyrant': new BeastTyrant(),
     'Quartermaster': new Quartermaster(),
     'Doomstalker': new Doomstalker(),
-    'Sawbones': new Sawbones()
-    // more to be unlocked...
+    'Sawbones': new Sawbones(),
+    'Berserker': new Berserker()
 };
